@@ -1,8 +1,50 @@
 \documentclass[]{compositionalityarticle}
 
+\title{Scalable Neural Network Decoders for Higher Dimensional Quantum Codes}
+
+\author[1]{N. P. Breuckmann}
+\author[1,2]{X. Ni}
+
+\affil[1]{Institute for Quantum Information, RWTH Aachen University, Germany}
+\affil[2]{Max Planck Institute of Quantum Optics, Germany}
+
+\leadauthor{Breuckmann}
+
+\keywords{Decoders, Codes}
+
+% \begin{abstract}
+% Machine learning has the potential to become an important tool in quantum error correction as it allows the decoder to adapt to the error distribution of a quantum chip. An additional motivation for using neural networks is the fact that they can be evaluated by dedicated hardware which is very fast and consumes little power. Machine learning has been previously applied to decode the surface code. However, these approaches are not scalable as the training has to be redone for every system size which becomes increasingly difficult. In this work the existence of local decoders for higher dimensional codes leads us to use a low-depth convolutional neural network to locally assign a likelihood of error on each qubit. For noiseless syndrome measurements, numerical simulations show that the decoder has a threshold of around 7.1\% when applied to the 4D toric code. When the syndrome measurements are noisy, the decoder performs better for larger code sizes when the error probability is low. We also give theoretical and numerical analysis to show how a convolutional neural network is different from the 1-nearest neighbor algorithm, which is a baseline machine learning method.
+%\end{abstract}
 
 \begin{document}
-Hello composable world!
+
+\maketitle
+
+\section{Introduction}
+
+A full-featured quantum computer will rely on some form of error correction as physical qubits are prone to the effects of environmental noise. When using error correcting codes, decoders play a large role in the performance of the faulttolerant protocols. Using neural networks to decode the surface code has been suggested in earlier works [3, 21, 36, 37]. The primary motivation inspiring these works to use neural networks is their ability to adapt to the error model. However, an issue that has not been addressed so far is scalability: in previous approaches, the neural networks have to be re-trained for every system size, despite the fact that in general machine learning methods become problematic when the input space becomes too large. Thus, it is interesting to ask whether there exists a family of quantum error correcting codes, which we can decode using neural networks in a clearly scalable way.
+
+To provide a positive answer to this question, we introduce a decoder for the four-dimensional version of the toric code based on neural networks for which the training only has to be performed once on a small system size. Afterwards the decoder can be scaled up to arbitrary system sizes without re-training. The layout of the network is a convolutional neural network which are widely used as a building block in image recognition. Furthermore, the neural network is constant depth with respect to
+the scaling of the system size. Our approach is informed by the existence of local decoders for the 4D toric code [6, 7, 11, 28]. A drawback of those decoders is their low threshold of less than 2\% against independent noise (assuming perfect syndrome measurements). The (global) minimum-weight decoder, on the other hand, has a threshold of 10.1\% [33] but it is not known to be computationally efficient. Our decoder shown a threshold of 7.1\% while having a complexity close to local decoders.
+This result is very close to the 7.3\% reported in [14] which uses a renormalization approach. When the syndrome measurements are noisy, our decoder still performs better for larger lattice when error probability is low, see Figure 10 for the plot. More numerical simulation needs to be done to determine the threshold. 
+
+This paper is structured as follows. In section 2 we discuss previous work in which machine learning was applied to decode quantum codes. In section 3 we give a review of the 4D
+toric code and its properties. In section 4, we provide a general introduction to machine learning. In section 5 we describe the application of convolutional neural networks as a subroutine in our decoding algorithm. In section 6 we discuss the results of Monte-Carlo simulations. In Appendix A, we give a short introduction to the backpropagation algorithm which we use to train the neural network. In Appendix D, we give a toy example which shows how a baseline machine learning model can fail at a
+task similar to decoding when the system size becomes large. This highlights the importance of choosing a translational invariant model as we do. In Appendix E, we observed and analyzed one property of multilayer convolutional neural networks, and show it fits nicely to the task of assigning likelihood of qubit errors for high dimensional toric code.
+
+\section{Previous Work}
+
+It is known for a while in the classical error correction community that the errors and syndromes of a parity checking code can be put together into a probabilistic graphical model, which is a major tool for machine learning. Probabilistic graphical models include for example Bayesian networks and the Ising model (see [39] for an introduction to probabilistic graphical model and connection to error correcting codes). In [15] (and references therein), it is shown that by using belief propagation, the decoder can achieve very good performance for LDPC and turbo code that are close to the Shannon limit. We want to note that while there is no formal connection (to our knowledge) between neural networks and graphical models, a graphical model of a problem is often helpful for designing the architecture of the neural network. For example, in [25] the structure of the Tanner graph is used to construct a neural network, in order to improve belief propagation for (classical) codes that have high density checks.
+
+In [29], the authors discussed applying belief propagation to decoding of quantum stabilizer codes. While stabilizer codes and classical parity checking codes share many similarities, the authors highlighted several issues that might cause belief propagation to work much worse for stabilizer codes (even with low density checks). In [12, 13], the authors used belief propagation as a subroutine in the renormalization decoder for topological codes, with the purpose of synchronizing marginal probabilities across neighbouring cells. Neural network decoder for quantum stabilizer codes has been studied in [3, 21, 36, 37] (more precisely in [36] hidden Boltzmann machines are used instead of neural networks). Our work will use a similar scheme as [21, 36], where the neural networks predict which qubits have undergone an error. In [3, 37], the neural networks output 1 or 2 bits which will correct the final measurement of the logical operators. The main difference of our work is that our machine learning decoder is naturally scalable through the use of convolutional neural networks.
+
+\section{The 4D Toric Code}
+
+\subsection{Definition}
+
+The 4D toric code is a stabilizer quantum code defined on a four-dimensional (4D) hypercubic lattice which was first considered in [11]. We will consider periodic boundary conditions so that topologically the lattice is a 4D torus. The faces of the lattice are squares and they are identified with the qubits. From now on we will use the words \emph{face} and \emph{qubit} interchangeably. The number of faces in a lattice of side-length $L$ is $\binom{4}{2}L^4=6L^4$. This follows from the fact that
+every face is uniquely determined by a vertex $v$ and two coordinates $i, j \in \{x, y, z, w\}$, so that the
+face with base-point $v$ lies in the $i$-$j$-plane. More generally, the number of k-dimensional objects in the lattice (1-dimensional objects would be edges or 3-dimensional objects would be cubes) is given by $\binom{4}{k} L^4$. There are stabilizer checks for every edge and cube in the lattice. A stabilizer check associated with a particular edge acts as Pauli-X on all faces which are incident to it (see Figure 1 (left)), whereas a stabilizer check associated with a particular cube acts as Pauli-Z on all faces incident to this particular cube (see Figure 1 (right)). All stabilizer checks act on 6 qubits and each qubit is acted upon by 8 stabilizer checks.
 \end{document}
 
 
