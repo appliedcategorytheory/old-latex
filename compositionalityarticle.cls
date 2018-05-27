@@ -21,15 +21,23 @@
 
 \LoadClass{extarticle}
 
-\RequirePackage[T1]{fontenc}
+%% Fonts and Language
+\RequirePackage[utf8]{inputenc}
 \RequirePackage{merriweather}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{raleway}
 \RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{lmodern}
 
 \RequirePackage{authblk}
 
 \newcommand{\leadauthor}[1]{\def\@leadauthor{#1}}
 \newcommand{\keywords}[1]{\def\@keywords{#1}}
 
+%% Fonts
+\newcommand{\titlefont}{\fontfamily{Raleway-TLF}\bfseries\fontsize{22pt}{24pt}\selectfont}
+
+%% Colors
 \RequirePackage{xcolor}
 
 \definecolor{mutedcoral}{RGB}{255,90,95}
@@ -37,6 +45,17 @@
 \definecolor{darkgrey}{RGB}{51,51,51}
 \definecolor{lightgrey}{RGB}{170,170,170}
 
+%% Abstract
 
+\newcommand{\abscontent}{
+\noindent
+\parbox{10cm}{\theabstract}
+}
+
+%% Make title
+
+\renewcommand{\@maketitle}{
+  { \raggedright\baselineskip=24pt\titlefont \@title \par}
+}
 
 
