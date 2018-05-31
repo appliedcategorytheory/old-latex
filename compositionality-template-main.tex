@@ -8,20 +8,21 @@
 \affil[1]{Institute for Quantum Information, RWTH Aachen University, Germany}
 \affil[2]{Max Planck Institute of Quantum Optics, Germany}
 
+\dates{May 16, 2018}
+
 \leadauthor{Breuckmann}
 
 \keywords{Decoders, Codes}
 
-%\begin{abstract}
-% Machine learning has the potential to become an important tool in quantum error correction as it allows the decoder to adapt to the error distribution of a quantum chip. An additional motivation for using neural networks is the fact that they can be evaluated by dedicated hardware which is very fast and consumes little power. Machine learning has been previously applied to decode the surface code. However, these approaches are not scalable as the training has to be redone for every system size which becomes increasingly difficult. In this work the existence of local decoders for higher dimensional codes leads us to use a low-depth convolutional neural network to locally assign a likelihood of error on each qubit. For noiseless syndrome measurements, numerical simulations show that the decoder has a threshold of around 7.1\% when applied to the 4D toric code. When the syndrome measurements are noisy, the decoder performs better for larger code sizes when the error probability is low. We also give theoretical and numerical analysis to show how a convolutional neural network is different from the 1-nearest neighbor algorithm, which is a baseline machine learning method.
-%\end{abstract}
+\begin{abstract}
+ Machine learning has the potential to become an important tool in quantum error correction as it allows the decoder to adapt to the error distribution of a quantum chip. An additional motivation for using neural networks is the fact that they can be evaluated by dedicated hardware which is very fast and consumes little power. Machine learning has been previously applied to decode the surface code. However, these approaches are not scalable as the training has to be redone for every system size which becomes increasingly difficult. In this work the existence of local decoders for higher dimensional codes leads us to use a low-depth convolutional neural network to locally assign a likelihood of error on each qubit. For noiseless syndrome measurements, numerical simulations show that the decoder has a threshold of around 7.1\% when applied to the 4D toric code. When the syndrome measurements are noisy, the decoder performs better for larger code sizes when the error probability is low. We also give theoretical and numerical analysis to show how a convolutional neural network is different from the 1-nearest neighbor algorithm, which is a baseline machine learning method.
+\end{abstract}
 
 \begin{document}
 
 \maketitle
 
 \section{Introduction}
-\merriweatherlight
 
 A full-featured quantum computer will rely on some form of error correction as physical qubits are prone to the effects of environmental noise. When using error correcting codes, decoders play a large role in the performance of the faulttolerant protocols. Using neural networks to decode the surface code has been suggested in earlier works [3, 21, 36, 37]. The primary motivation inspiring these works to use neural networks is their ability to adapt to the error model. However, an issue that has not been addressed so far is scalability: in previous approaches, the neural networks have to be re-trained for every system size, despite the fact that in general machine learning methods become problematic when the input space becomes too large. Thus, it is interesting to ask whether there exists a family of quantum error correcting codes, which we can decode using neural networks in a clearly scalable way.
 

@@ -31,11 +31,14 @@
 
 \RequirePackage{authblk}
 
-\newcommand{\leadauthor}[1]{\def\@leadauthor{#1}}
-\newcommand{\keywords}[1]{\def\@keywords{#1}}
+%% Graphics tables and other formatting
+\RequirePackage[
+   twoside
+ , letterpaper]{geometry}
 
-%% Fonts
-\newcommand{\titlefont}{\fontfamily{Raleway-TLF}\bfseries\fontsize{22pt}{24pt}\selectfont}
+\newcommand{\leadauthor}[1]{\def \@leadauthor{#1}}
+\newcommand{\keywords}[1]{\def \@keywords{#1}}
+\newcommand{\dates}[1]{\def \@dates{#1}}
 
 %% Colors
 \RequirePackage{xcolor}
@@ -45,17 +48,88 @@
 \definecolor{darkgrey}{RGB}{51,51,51}
 \definecolor{lightgrey}{RGB}{170,170,170}
 
-%% Abstract
-
-\newcommand{\abscontent}{
-\noindent
-\parbox{10cm}{\theabstract}
+%% Fonts
+\newcommand \titlefont {
+    \color{mutedcoral}
+    \fontfamily{Raleway-TLF}
+%    \bfseries
+    \fontsize{22pt}{24pt}
+    \selectfont
 }
 
-%% Make title
+\newcommand \datesfont {
+    \color{darkgray}
+    \fontfamily{Raleway-TLF}
+    \fontsize{8pt}{10pt}
+    \selectfont
+}
 
-\renewcommand{\@maketitle}{
-  { \raggedright\baselineskip=24pt\titlefont \@title \par}
+\newcommand \abstractfont {
+    \color{darkgray}
+    \merriweatherlight
+    \selectfont
+}
+
+\renewcommand \Authfont {
+    \color{darkgray}
+    \fontfamily{Raleway-TLF}
+    \fontsize{12pt}{14pt}
+    \selectfont
+ }
+
+\renewcommand \Affilfont {
+    \color{darkgray}
+    \fontfamily{Raleway-TLF}
+    \fontsize{8pt}{10pt}
+    \selectfont
+}
+
+%% Abstract formatting
+\def\xabstract{abstract}
+\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
+\long\gdef\theabstract{\ignorespaces#1}
+\def\go{\end{abstract}}\else
+\typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
+COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
+\gdef\theabstract{\vskip12pt BADLY FORMED ABSTRACT: PLEASE DO
+NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN
+THE ABSTRACT\vskip12pt}\let\go\relax\fi
+\go}
+
+\newcommand \abstractcontent {
+    \noindent
+    \abstractfont
+    \parbox{10cm}{\theabstract}
+}
+\renewcommand \@maketitle {
+  {
+     \raggedright
+     \baselineskip=24pt
+     \titlefont
+     \@title
+     \par
+  }
+
+  \vskip12pt
+
+  {
+     \raggedright
+     \@author
+     \par
+  }
+
+  \vskip2pt
+
+  {
+    \raggedright
+    \datesfont
+    \@ifundefined{@dates}{}{\@dates}
+    \par
+  }
+
+  \vskip12pt
+
+  \abstractcontent
 }
 
 
