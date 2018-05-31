@@ -33,8 +33,24 @@
 
 %% Graphics tables and other formatting
 \RequirePackage[
-   twoside
- , letterpaper]{geometry}
+%   twoside
+% , letterpaper
+  ]{geometry}
+
+%% Bibliography
+%% v1.41 (15/11/2016)
+%% Use pnas-new.bst if available
+%% If not, try to use pnas2011.bst instead
+%% If both aren't available, fall back to
+%% unsrtnat
+\RequirePackage[numbers,sort&compress,merge,round]{natbib}
+
+%% Headers and Footers
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+
+\renewcommand \headrulewidth {0pt}
+\renewcommand \footrulewidth {0.5pt}
 
 \newcommand{\leadauthor}[1]{\def \@leadauthor{#1}}
 \newcommand{\keywords}[1]{\def \@keywords{#1}}
@@ -84,7 +100,7 @@
     \selectfont
 }
 
-%% Abstract formatting
+%% Abstract
 \def\xabstract{abstract}
 \long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
 \long\gdef\theabstract{\ignorespaces#1}
@@ -101,6 +117,8 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
     \abstractfont
     \parbox{10cm}{\theabstract}
 }
+
+% maketitle
 \renewcommand \@maketitle {
   {
      \raggedright
@@ -132,4 +150,21 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
   \abstractcontent
 }
 
+% title section formatting
+
+\RequirePackage[explicit]{titlesec}
+
+\titleformat {\section}
+  {\large\fontfamily{Raleway-TLF}\bfseries}
+  {\thesection}
+  {0.5em}
+  {#1}
+  []
+
+\titleformat{\subsection}
+  {\sffamily\fontfamily{Raleway-TLF}\bfseries}
+  {\thesubsection}
+  {0.5em}
+  {#1}
+  []
 
