@@ -49,8 +49,31 @@
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
 
+\fancyhead{}
+\fancyfoot{}
+\fancyfoot[LE,LO] {
+   \fontfamily{Raleway-TLF}
+   \color{mutedcoral}
+   \selectfont
+   MMMM Accepted in Compositionality \date 
+}
+\fancyfoot[RE,RO]{
+   \fontfamily{Raleway-TLF}
+   \color{mutedcoral}
+   \selectfont
+   \thepage
+}
+
 \renewcommand \headrulewidth {0pt}
 \renewcommand \footrulewidth {0.5pt}
+\renewcommand \footrule { 
+   \hbox to \footwidth {
+     \color{mutedcoral}
+     \leaders
+     \hrule height \footrulewidth
+     \hfill
+   }
+}
 
 \newcommand{\leadauthor}[1]{\def \@leadauthor{#1}}
 \newcommand{\keywords}[1]{\def \@keywords{#1}}
@@ -113,9 +136,10 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
 \go}
 
 \newcommand \abstractcontent {
-    \noindent
+%    \noindent
+    \twocolumn
     \abstractfont
-    \parbox{10cm}{\theabstract}
+    \theabstract
 }
 
 % maketitle
@@ -168,3 +192,8 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
   {#1}
   []
 
+\renewcommand \normalsize { 
+%   \merriweather 
+   \color{darkgray} 
+   \selectfont 
+}

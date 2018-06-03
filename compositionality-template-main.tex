@@ -19,13 +19,14 @@
 \end{abstract}
 
 \begin{document}
-
+\twocolumn
 \maketitle
+\merriweatherlight
 
 \section{Introduction}
 
-A full-featured quantum computer will rely on some form of error correction as physical qubits are prone to the effects of environmental noise. When using error correcting codes, decoders play a large role in the performance of the faulttolerant protocols. Using neural networks to decode the surface code has been suggested in earlier works \cite{beaz2017reactionnetworks}. The primary motivation inspiring these works to use neural networks is their ability to adapt to the error model. However, an issue that has not been addressed so far is scalability: in previous approaches, the neural networks have to be re-trained for every system size, despite the fact that in general machine learning methods become problematic when the input space becomes too large. Thus, it is interesting to ask whether there exists a family of quantum error correcting codes, which we can decode using neural networks in a clearly scalable way.
-
+A full-featured quantum computer will rely on some form of error correction as physical qubits are prone to the effects of environmental noise. When using error correcting codes, decoders play a large role in the performance of the faulttolerant protocols. Using neural networks to decode the surface code has been suggested in earlier works. The primary motivation inspiring these works to use neural networks is their ability to adapt to the error model. However, an issue that has not been addressed so far is scalability: in previous approaches, the neural networks have to be re-trained for every system size, despite the fact that in general machine learning methods become problematic when the input space becomes too large. Thus, it is interesting to ask whether there exists a family of quantum error correcting codes, which we can decode using neural networks in a clearly scalable way.
+% \cite{beaz2017reactionnetworks}
 To provide a positive answer to this question, we introduce a decoder for the four-dimensional version of the toric code based on neural networks for which the training only has to be performed once on a small system size. Afterwards the decoder can be scaled up to arbitrary system sizes without re-training. The layout of the network is a convolutional neural network which are widely used as a building block in image recognition. Furthermore, the neural network is constant depth with respect to
 the scaling of the system size. Our approach is informed by the existence of local decoders for the 4D toric code [6, 7, 11, 28]. A drawback of those decoders is their low threshold of less than 2\% against independent noise (assuming perfect syndrome measurements). The (global) minimum-weight decoder, on the other hand, has a threshold of 10.1\% [33] but it is not known to be computationally efficient. Our decoder shown a threshold of 7.1\% while having a complexity close to local decoders.
 This result is very close to the 7.3\% reported in [14] which uses a renormalization approach. When the syndrome measurements are noisy, our decoder still performs better for larger lattice when error probability is low, see Figure 10 for the plot. More numerical simulation needs to be done to determine the threshold. 
@@ -48,7 +49,7 @@ The 4D toric code is a stabilizer quantum code defined on a four-dimensional (4D
 every face is uniquely determined by a vertex $v$ and two coordinates $i, j \in \{x, y, z, w\}$, so that the
 face with base-point $v$ lies in the $i$-$j$-plane. More generally, the number of k-dimensional objects in the lattice (1-dimensional objects would be edges or 3-dimensional objects would be cubes) is given by $\binom{4}{k} L^4$. There are stabilizer checks for every edge and cube in the lattice. A stabilizer check associated with a particular edge acts as Pauli-X on all faces which are incident to it (see Figure 1 (left)), whereas a stabilizer check associated with a particular cube acts as Pauli-Z on all faces incident to this particular cube (see Figure 1 (right)). All stabilizer checks act on 6 qubits and each qubit is acted upon by 8 stabilizer checks.
 
-\bibliography{compositionality-sample}
+%\bibliography{compositionality-sample}
 
 \end{document}
 
