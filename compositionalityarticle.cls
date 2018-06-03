@@ -26,8 +26,12 @@
 \RequirePackage{merriweather}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{raleway}
-\RequirePackage{amsmath,amsfonts,amssymb}
+\RequirePackage{amsmath,amsfonts,amssymb,amsthm}
 \RequirePackage{lmodern}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
 
 \RequirePackage{authblk}
 
@@ -36,6 +40,7 @@
 %   twoside
 % , letterpaper
   ]{geometry}
+\RequirePackage{graphicx}
 
 %% Bibliography
 %% v1.41 (15/11/2016)
@@ -51,13 +56,13 @@
 
 \fancyhead{}
 \fancyfoot{}
-\fancyfoot[LE,LO] {
+\fancyfoot[L] {
    \fontfamily{Raleway-TLF}
    \color{mutedcoral}
    \selectfont
    MMMM Accepted in Compositionality \date 
 }
-\fancyfoot[RE,RO]{
+\fancyfoot[R]{
    \fontfamily{Raleway-TLF}
    \color{mutedcoral}
    \selectfont
@@ -75,7 +80,7 @@
 \newcommand{\leadauthor}[1]{\def \@leadauthor{#1}}
 \newcommand{\keywords}[1]{\def \@keywords{#1}}
 \newcommand{\dates}[1]{\def \@dates{#1}}
-
+\newcommand{\email}[1]{\def \@email{#1}}
 %% Colors
 \RequirePackage{xcolor}
 
@@ -103,6 +108,7 @@
 \newcommand \abstractfont {
     \color{darkgray}
     \merriweatherlight
+    \bfseries
     \selectfont
 }
 
