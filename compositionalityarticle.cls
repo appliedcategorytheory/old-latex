@@ -66,13 +66,10 @@
 
 \renewcommand \headrulewidth {0pt}
 \renewcommand \footrulewidth {0.5pt}
-\renewcommand \footrule { 
-   \hbox to \footwidth {
-     \color{mutedcoral}
-     \leaders
-     \hrule height \footrulewidth
-     \hfill
-   }
+\renewcommand \footrule {
+  \color{darkgray}
+  \hrule
+  \vspace{0.3cm}
 }
 
 \newcommand{\leadauthor}[1]{\def \@leadauthor{#1}}
