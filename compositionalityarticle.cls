@@ -127,19 +127,26 @@
 }
 
 %% Abstract
-\def\xabstract{abstract}
-\long\def\abstract#1\end#2{\def\two{#2}\ifx\two\xabstract 
-\long\gdef\theabstract{\ignorespaces#1}
-\def\go{\end{abstract}}\else
-\typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J
-COMMANDS WITHIN ABSTRACT^^J^^J}#1\end{#2}
-\gdef\theabstract{\vskip12pt BADLY FORMED ABSTRACT: PLEASE DO
-NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN
-THE ABSTRACT\vskip12pt}\let\go\relax\fi
-\go}
+\def \xabstract{abstract}
+\long \def \abstract#1 \end#2{
+  \def \two{#2} 
+  \ifx \two \xabstract 
+  \long \gdef \theabstract{ \ignorespaces#1 }
+  \def \go{
+      \end{abstract}
+  }
+  \else
+  \typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J COMMANDS WITHIN ABSTRACT^^J^^J}#1 \end{#2}
+  \gdef \theabstract{ 
+       \vskip12pt BADLY FORMED ABSTRACT: PLEASE DO NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN THE ABSTRACT\vskip12pt
+  }
+  \let \go \relax
+  \fi
+  \go
+}
 
 \newcommand \abstractcontent {
-%    \noindent
+    \noindent
     \twocolumn
     \abstractfont
     \theabstract
@@ -171,10 +178,6 @@ THE ABSTRACT\vskip12pt}\let\go\relax\fi
     \@ifundefined{@dates}{}{\@dates}
     \par
   }
-
-  \vskip12pt
-
-  \abstractcontent
 }
 
 % title section formatting
