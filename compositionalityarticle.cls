@@ -82,7 +82,7 @@
 \newcommand{\dates}[1]{\def \@dates{#1}}
 \newcommand{\email}[1]{\def \@email{#1}}
 %% Colors
-\RequirePackage{xcolor}
+\RequirePackage[svgnames]{xcolor}
 
 \definecolor{mutedcoral}{RGB}{255,90,95}
 \definecolor{palecoral}{RGB}{255,166,158}
