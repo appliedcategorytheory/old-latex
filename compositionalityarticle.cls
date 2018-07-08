@@ -147,7 +147,7 @@
 
 \newcommand \abstractcontent {
     \noindent
-    \twocolumn
+%    \twocolumn
     \abstractfont
     \theabstract
 }

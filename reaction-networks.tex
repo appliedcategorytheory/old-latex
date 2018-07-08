@@ -106,8 +106,17 @@ urlcolor=myurlcolor}
 \newcommand{\define}[1]{{\bf \boldmath{#1}}}
 
 % theorem environments
+\newtheoremstyle{compositionality}
+     {3pt}
+     {3pt}
+     {\merriweatherlight}
+     {1pt}
+     {\sffamily\fontfamily{Raleway-TLF}\bf}
+     {.}
+     { }
+     {}
 
-\theoremstyle{plain}
+\theoremstyle{compositionality}
 
 \newtheorem{thm}{Theorem}
 \newtheorem{unthm}{Unproved ``Theorem''}
@@ -139,37 +148,50 @@ urlcolor=myurlcolor}
 %%%%%%%%%%%% do not number subsections
 \setcounter{secnumdepth}{1} 
 
-\begin{document}
+\title{A Compositional Framework for Reaction Networks}
 
-\begin{center}   
-  {\bf A Compositional Framework for Reaction Networks \\}   
-  \vspace{0.3cm}
-  {\em John\ C.\ Baez \\}
-  \vspace{0.3cm}
-  {\small
- Department of Mathematics \\
-    University of California \\
-  Riverside CA, USA 92521 \\ and \\
- Centre for Quantum Technologies  \\
-    National University of Singapore \\
-    Singapore 117543  \\    } 
-  \vspace{0.4cm}
-{\em Blake S. Pollard \\ }
-\vspace{0.3cm}
-{\small Department of Physics and Astronomy \\
-University of California \\
-Riverside CA 92521 \\ }
-  \vspace{0.3cm}   
-  {\small email:  baez@math.ucr.edu, bpoll002@ucr.edu\\} 
-  \vspace{0.3cm}   
-  {\small May 19, 2017}
-  \vspace{0.3cm}   
-\end{center}   
+\author[1,2]{John C. Baez}
+\author[3]{Blake S. Pollard}
 
+\affil[1]{Department of Mathematics University of California Riverside CA, USA 92521}
+\affil[2]{Centre for Quantum Technologies National University of Singapore, Singapore 117543}
+\affil[3]{Department of Physics and Astronomy University of California, Riverside CA 92521}
 
 \begin{abstract}
 Reaction networks, or equivalently Petri nets, are a general framework for describing processes in which entities of various kinds interact and turn into other entities.  In chemistry, where the reactions are assigned `rate constants', any reaction network gives rise to a nonlinear dynamical system called its `rate equation'.   Here we generalize these ideas to   `open' reaction networks, which allow entities to flow in and out at certain designated inputs and outputs.  We treat open reaction networks as morphisms in a category.  Composing two such morphisms connects the outputs of the first to the inputs of the second. We construct a functor sending any open reaction network to its corresponding `open dynamical system'.  This provides a compositional framework for studying the dynamics of reaction networks.  We then turn to statics: that is, steady state solutions of open dynamical systems.   We construct a `black-boxing' functor that sends any open dynamical system to the relation that it imposes between input and output variables in steady states.  This extends our earlier work on black-boxing for Markov processes.
 \end{abstract}
+
+\begin{document}
+\maketitle
+\abstractcontent
+\merriweatherlight
+
+% \begin{center}   
+  % {\bf A Compositional Framework for Reaction Networks \\}   
+  % \vspace{0.3cm}
+  % {\em John\ C.\ Baez \\}
+  % \vspace{0.3cm}
+  % {\small
+ % Department of Mathematics \\
+  %   University of California \\
+  % Riverside CA, USA 92521 \\ and \\
+ % Centre for Quantum Technologies  \\
+  %   National University of Singapore \\
+  %   Singapore 117543  \\    } 
+  % \vspace{0.4cm}
+% {\em Blake S. Pollard \\ }
+% \vspace{0.3cm}
+% {\small Department of Physics and Astronomy \\
+% University of California \\
+% Riverside CA 92521 \\ }
+  % \vspace{0.3cm}   
+  % {\small email:  baez@math.ucr.edu, bpoll002@ucr.edu\\} 
+  % \vspace{0.3cm}   
+  % {\small May 19, 2017}
+  % \vspace{0.3cm}   
+% \end{center}   
+
+
 
 \section{Introduction}
 \label{sec:intro}
