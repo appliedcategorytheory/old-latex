@@ -107,8 +107,8 @@ urlcolor=myurlcolor}
 
 % theorem environments
 \newtheoremstyle{compositionality}
-     {3pt}
-     {3pt}
+     {15pt} % Margin above
+     {15pt} % Margin below
      {\merriweatherlight}
      {1pt}
      {\sffamily\fontfamily{Raleway-TLF}\bf}
@@ -192,7 +192,66 @@ Reaction networks, or equivalently Petri nets, are a general framework for descr
 % \end{center}   
 
 
+\section{Font-check}
+The quick brown fox jumps over the lazy dog 12234567890
 
+\textbf{The quick brown fox jumps over the lazy dog 12234567890}
+
+\emph{The quick brown fox jumps over the lazy dog 12234567890}
+\beq
+\label{SIRS_rate_equation}
+\begin{array}{ccl}
+ The quick brown fox jumps over the lazy dog 12234567890\\ \\
+\end{array}
+\eeq
+
+
+$The quick brown fox jumps over the lazy dog 12234567890$
+
+\[
+\begin{tikzpicture}
+	\begin{pgfonlayer}{nodelayer}
+		\node [style=species] (S) at (0, -1.5) {$S$};
+		\node [style=species] (I) at (0, 1.5) {$I$};
+		\node [style=transition] (i) at (-1.5,0) {$\; \big. \iota$ \,};   
+		\node [style=none] (ATL) at (-3, 2) {};
+		\node [style=none] (ATR) at (-2.4, 2) {};
+		\node [style=none] (ABR) at (-2.4, -2) {};
+		\node [style=none] (ABL) at (-3, -2) {};
+		\node [style=none] (BTL) at (0.7, 2) {};
+		\node [style=none] (BTR) at (1.3, 2) {};
+		\node [style=none] (BBR) at (1.3, -2) {};
+		\node [style=none] (BBL) at (0.7, -2) {};
+	      \node [style=species] (S) at (0, -1.5) {$over the lazy dog 12234567890$};
+		\node [style=species] (I) at (0, 1.5) {The quick brown fox jumps};
+             \node [style=species] (R) at (2.5,0) {$R$};
+             \node [style=transition] (r) at (1.5,1.4) {$\; \big. \rho\,$};    
+		\node [style=transition] (l) at (1.5,-1.4) {$\; \big. \lambda \,$};    
+		\node [style=none] (A'TL) at (-1.3, 2) {};
+		\node [style=none] (A'TR) at (-0.7, 2) {};
+		\node [style=none] (A'BR) at (-0.7, -2) {};
+		\node [style=none] (A'BL) at (-1.3, -2) {};
+		\node [style=none] (B'TL) at (3.2, 2) {};
+		\node [style=none] (B'TR) at (3.8, 2) {};
+		\node [style=none] (B'BR) at (3.8, -2) {};
+		\node [style=none] (B'BL) at (3.2, -2) {};
+		
+	\end{pgfonlayer}
+	\begin{pgfonlayer}{edgelayer}
+		\draw [style=inarrow, bend left=40, looseness=1.00] (S) to (i);
+		\draw [style=inarrow, bend right=40, looseness=1.00] (I) to (i);
+		\draw [style=inarrow, bend right=25, looseness=1.00] (i) to (I);
+		\draw [style=inarrow, bend right=40, looseness=1.00] (i) to (I);
+	       \draw [style=inarrow, bend left=40, looseness=1.00] (R) to (l);
+		\draw [style=inarrow, bend left=40, looseness=1.00] (r) to (R);
+		\draw [style=inarrow,  bend left=10, looseness=1.00] (I) to (r);
+	      \draw [style=inarrow, bend left=40, looseness=1.00] (R) to (l);
+		\draw [style=inarrow,  bend left=10, looseness=1.00] (l) to (S);
+		\draw [style=inarrow, bend left=40, looseness=1.00] (r) to (R);
+		\draw [style=inarrow,  bend left=10, looseness=1.00] (I) to (r);
+	\end{pgfonlayer}
+\end{tikzpicture}
+\]
 \section{Introduction}
 \label{sec:intro}
 

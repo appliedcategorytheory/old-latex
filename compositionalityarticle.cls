@@ -60,7 +60,7 @@
    \fontfamily{Raleway-TLF}
    \color{mutedcoral}
    \selectfont
-   MMMM Accepted in Compositionality \date 
+   Accepted in Compositionality \date 
 }
 \fancyfoot[R]{
    \fontfamily{Raleway-TLF}
@@ -199,7 +199,7 @@
   []
 
 \renewcommand \normalsize { 
-%   \merriweather 
+%   \merriweatherlight
    \color{darkgray} 
    \selectfont 
 }
