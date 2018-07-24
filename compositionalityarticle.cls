@@ -54,6 +54,8 @@
 %% unsrtnat
 \RequirePackage[numbers,sort&compress,merge,round]{natbib}
 
+\renewcommand*{\bibfont}{\raggedright}
+
 %% Headers and Footers
 \RequirePackage{fancyhdr}
 \pagestyle{fancy}
@@ -180,3 +182,5 @@
    \color{darkgray} 
    \selectfont 
 }
+
+
