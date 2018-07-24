@@ -103,15 +103,15 @@ urlcolor=myurlcolor}
 
 % inline definitions
 
-\newcommand{\define}[1]{{\bf \boldmath{#1}}}
+\newcommand{\define}[1]{{\bf{\boldmath{#1}}}}
 
 % theorem environments
 \newtheoremstyle{compositionality}
      {15pt} % Margin above
      {15pt} % Margin below
-     {\merriweatherlight}
+     {\normalfont}
      {1pt}
-     {\sffamily\fontfamily{Raleway-TLF}\bf}
+     {\sffamily\fontfamily{Raleway-TLF}\bfseries}
      {.}
      { }
      {}
@@ -157,14 +157,13 @@ urlcolor=myurlcolor}
 \affil[2]{Centre for Quantum Technologies National University of Singapore, Singapore 117543}
 \affil[3]{Department of Physics and Astronomy University of California, Riverside CA 92521}
 
-\begin{abstract}
-Reaction networks, or equivalently Petri nets, are a general framework for describing processes in which entities of various kinds interact and turn into other entities.  In chemistry, where the reactions are assigned `rate constants', any reaction network gives rise to a nonlinear dynamical system called its `rate equation'.   Here we generalize these ideas to   `open' reaction networks, which allow entities to flow in and out at certain designated inputs and outputs.  We treat open reaction networks as morphisms in a category.  Composing two such morphisms connects the outputs of the first to the inputs of the second. We construct a functor sending any open reaction network to its corresponding `open dynamical system'.  This provides a compositional framework for studying the dynamics of reaction networks.  We then turn to statics: that is, steady state solutions of open dynamical systems.   We construct a `black-boxing' functor that sends any open dynamical system to the relation that it imposes between input and output variables in steady states.  This extends our earlier work on black-boxing for Markov processes.
-\end{abstract}
 
 \begin{document}
 \maketitle
-\abstractcontent
-\merriweatherlight
+\begin{abstract}
+Reaction networks, or equivalently Petri nets, are a general framework for describing processes in which entities of various kinds interact and turn into other entities.  In chemistry, where the reactions are assigned `rate constants', any reaction network gives rise to a nonlinear dynamical system called its `rate equation'.   Here we generalize these ideas to   `open' reaction networks, which allow entities to flow in and out at certain designated inputs and outputs.  We treat open reaction networks as morphisms in a category.  Composing two such morphisms connects the outputs of the first to the inputs of the second. We construct a functor sending any open reaction network to its corresponding `open dynamical system'.  This provides a compositional framework for studying the dynamics of reaction networks.  We then turn to statics: that is, steady state solutions of open dynamical systems.   We construct a `black-boxing' functor that sends any open dynamical system to the relation that it imposes between input and output variables in steady states.  This extends our earlier work on black-boxing for Markov processes.
+\end{abstract}
+%\merriweatherlight
 
 % \begin{center}   
   % {\bf A Compositional Framework for Reaction Networks \\}   
@@ -192,66 +191,6 @@ Reaction networks, or equivalently Petri nets, are a general framework for descr
 % \end{center}   
 
 
-\section{Font-check}
-The quick brown fox jumps over the lazy dog 12234567890
-
-\textbf{The quick brown fox jumps over the lazy dog 12234567890}
-
-\emph{The quick brown fox jumps over the lazy dog 12234567890}
-\beq
-\label{SIRS_rate_equation}
-\begin{array}{ccl}
- The quick brown fox jumps over the lazy dog 12234567890\\ \\
-\end{array}
-\eeq
-
-
-$The quick brown fox jumps over the lazy dog 12234567890$
-
-\[
-\begin{tikzpicture}
-	\begin{pgfonlayer}{nodelayer}
-		\node [style=species] (S) at (0, -1.5) {$S$};
-		\node [style=species] (I) at (0, 1.5) {$I$};
-		\node [style=transition] (i) at (-1.5,0) {$\; \big. \iota$ \,};   
-		\node [style=none] (ATL) at (-3, 2) {};
-		\node [style=none] (ATR) at (-2.4, 2) {};
-		\node [style=none] (ABR) at (-2.4, -2) {};
-		\node [style=none] (ABL) at (-3, -2) {};
-		\node [style=none] (BTL) at (0.7, 2) {};
-		\node [style=none] (BTR) at (1.3, 2) {};
-		\node [style=none] (BBR) at (1.3, -2) {};
-		\node [style=none] (BBL) at (0.7, -2) {};
-	      \node [style=species] (S) at (0, -1.5) {$over the lazy dog 12234567890$};
-		\node [style=species] (I) at (0, 1.5) {The quick brown fox jumps};
-             \node [style=species] (R) at (2.5,0) {$R$};
-             \node [style=transition] (r) at (1.5,1.4) {$\; \big. \rho\,$};    
-		\node [style=transition] (l) at (1.5,-1.4) {$\; \big. \lambda \,$};    
-		\node [style=none] (A'TL) at (-1.3, 2) {};
-		\node [style=none] (A'TR) at (-0.7, 2) {};
-		\node [style=none] (A'BR) at (-0.7, -2) {};
-		\node [style=none] (A'BL) at (-1.3, -2) {};
-		\node [style=none] (B'TL) at (3.2, 2) {};
-		\node [style=none] (B'TR) at (3.8, 2) {};
-		\node [style=none] (B'BR) at (3.8, -2) {};
-		\node [style=none] (B'BL) at (3.2, -2) {};
-		
-	\end{pgfonlayer}
-	\begin{pgfonlayer}{edgelayer}
-		\draw [style=inarrow, bend left=40, looseness=1.00] (S) to (i);
-		\draw [style=inarrow, bend right=40, looseness=1.00] (I) to (i);
-		\draw [style=inarrow, bend right=25, looseness=1.00] (i) to (I);
-		\draw [style=inarrow, bend right=40, looseness=1.00] (i) to (I);
-	       \draw [style=inarrow, bend left=40, looseness=1.00] (R) to (l);
-		\draw [style=inarrow, bend left=40, looseness=1.00] (r) to (R);
-		\draw [style=inarrow,  bend left=10, looseness=1.00] (I) to (r);
-	      \draw [style=inarrow, bend left=40, looseness=1.00] (R) to (l);
-		\draw [style=inarrow,  bend left=10, looseness=1.00] (l) to (S);
-		\draw [style=inarrow, bend left=40, looseness=1.00] (r) to (R);
-		\draw [style=inarrow,  bend left=10, looseness=1.00] (I) to (r);
-	\end{pgfonlayer}
-\end{tikzpicture}
-\]
 \section{Introduction}
 \label{sec:intro}
 
@@ -620,7 +559,7 @@ We thank Brendan Fong for many conversations, and David Spivak for pointing out 
 We begin by precisely defining reaction networks and Petri nets, so we can see that they are
 two ways of presenting the same concept.
 
-\begin{defn}
+\begin{defn} 
 A \define{reaction network} $(S,T,s,t)$ consists of:
 \begin{itemize}
 \item a finite set $S$,

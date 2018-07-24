@@ -23,11 +23,15 @@
 
 %% Fonts and Language
 \RequirePackage[utf8]{inputenc}
-\RequirePackage{merriweather}
 \RequirePackage[T1]{fontenc}
 \RequirePackage{raleway}
 \RequirePackage{amsmath,amsfonts,amssymb,amsthm}
 \RequirePackage{lmodern}
+%\RequirePackage{fouriernc}
+\RequirePackage[light]{merriweather}
+
+\DeclareMathSizes{\@xpt}{\@xipt}{8}{6}
+\linespread{1.4}
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
@@ -60,7 +64,7 @@
    \fontfamily{Raleway-TLF}
    \color{mutedcoral}
    \selectfont
-   Accepted in Compositionality \date 
+   \logo \hspace{0.3cm} Accepted in Compositionality \date 
 }
 \fancyfoot[R]{
    \fontfamily{Raleway-TLF}
@@ -68,6 +72,8 @@
    \selectfont
    \thepage
 }
+
+\newcommand {\logo} {\raisebox{-0.25cm}[0.1cm]{\includegraphics[width=0.8cm, height=0.8cm]{logo}}}
 
 \renewcommand \headrulewidth {0pt}
 \renewcommand \footrulewidth {0.5pt}
@@ -105,12 +111,7 @@
     \selectfont
 }
 
-\newcommand \abstractfont {
-    \color{darkgray}
-    \merriweatherlight
-    \bfseries
-    \selectfont
-}
+\newcommand \abstractfont{\color{darkgray}\merriweatherlight\bfseries\selectfont}
 
 \renewcommand \Authfont {
     \color{darkgray}
@@ -126,32 +127,8 @@
     \selectfont
 }
 
-%% Abstract
-\def \xabstract{abstract}
-\long \def \abstract#1 \end#2{
-  \def \two{#2} 
-  \ifx \two \xabstract 
-  \long \gdef \theabstract{ \ignorespaces#1 }
-  \def \go{
-      \end{abstract}
-  }
-  \else
-  \typeout{^^J^^J PLEASE DO NOT USE ANY \string\begin\space \string\end^^J COMMANDS WITHIN ABSTRACT^^J^^J}#1 \end{#2}
-  \gdef \theabstract{ 
-       \vskip12pt BADLY FORMED ABSTRACT: PLEASE DO NOT USE {\tt\string\begin...\string\end} COMMANDS WITHIN THE ABSTRACT\vskip12pt
-  }
-  \let \go \relax
-  \fi
-  \go
-}
-
-\newcommand \abstractcontent {
-    \noindent
-%    \twocolumn
-    \abstractfont
-    \theabstract
-}
-
+%% Abstract formatting
+\renewenvironment{abstract}{\thispagestyle{fancy}\vspace{0.7cm}\abstractfont\par\noindent\ignorespaces}{\vspace{0.2cm}}
 % maketitle
 \renewcommand \@maketitle {
   {
